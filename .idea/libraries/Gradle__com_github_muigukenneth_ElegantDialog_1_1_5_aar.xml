@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.muigukenneth:ElegantDialog:1.1.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fd1e92dac55762a94763c7b91bfdf78c/ElegantDialog-1.1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fd1e92dac55762a94763c7b91bfdf78c/ElegantDialog-1.1.5/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.muigukenneth/ElegantDialog/1.1.5/e3b29b7aaef3b028648295c0d5f5c8ce96712438/ElegantDialog-1.1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Puzzle Game</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_play">Play</string>
+    <string name="title_leaders">Leaders</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
