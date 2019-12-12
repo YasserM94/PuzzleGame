@@ -271,7 +271,7 @@ class Level2Fragment : Fragment() {
     //choose images positions randomly
     fun fillListOfIndexesForLevel1() {
         while (listOfIndexes.size < level_Size / 2) {
-            var index = generateRandomNumber(12)//total of images
+            var index = generateRandomNumber(9)//total of images
             if (!listOfIndexes.contains(index)) {
                 listOfIndexes.add(index)
             }
