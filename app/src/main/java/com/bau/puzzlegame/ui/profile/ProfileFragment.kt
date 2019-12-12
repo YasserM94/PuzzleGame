@@ -49,7 +49,6 @@ class ProfileFragment : Fragment(), avatarInterface {
     private var editeEnabled = false
     private var localAvatar = false
     internal var avatarDialog: avatarPickerActivity? = null
-
     //endregion
 
     override fun onCreateView(
@@ -214,9 +213,11 @@ class ProfileFragment : Fragment(), avatarInterface {
         pickAvatar.isVisible = status
         newPasswordTv.isVisible = status
 
+
         username.isEnabled = false
         score.isEnabled = false
-        phoneNumber.isEnabled = status
+        phoneNumber.isEnabled = false
+
         pickAvatar.isVisible = status
         newPasswordTv.isVisible = status
     }

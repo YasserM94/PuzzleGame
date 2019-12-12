@@ -54,6 +54,8 @@ class Level4Fragment : Fragment() {
     lateinit var listOfIndexes: ArrayList<Int>
     lateinit var listFiller: ArrayList<Int>
     lateinit var timerTv: TextView
+    lateinit var backLevel: TextView
+    lateinit var nextLevel: TextView
     var firstPress = true
     var idForFirstPress = ""
     var idForSecondPress = ""
@@ -84,6 +86,9 @@ class Level4Fragment : Fragment() {
 
         getDataForLivel1()
 
+        nextLevel()
+        backLevel()
+
         return root
     }
 
@@ -98,6 +103,8 @@ class Level4Fragment : Fragment() {
 
         usernameValue = sharedPreferenses(this.context!!).getUsername()!!
         scoreTv = root.findViewById(R.id.score)
+        nextLevel = root.findViewById(R.id.level_tv_next)
+        backLevel = root.findViewById(R.id.level_tv_back)
         list = ArrayList<PuzzleModel>()
         listOfPuzzle = Array(level_Size) { PuzzleModel() }
         listOfIndexes = ArrayList<Int>()
@@ -290,8 +297,8 @@ class Level4Fragment : Fragment() {
     fun showDialog() {
         score += (timerTv.text.toString().toLong()) * 3
         val builder = AlertDialog.Builder(this.requireContext())
-        builder.setTitle("Level finished")
-        builder.setMessage("your score is :  $score")
+        builder.setTitle("Level Finished")
+        builder.setMessage("Your score is:  $score")
 
         builder.setPositiveButton("Next") { _, _ ->
             this.getUserScore()
@@ -299,8 +306,21 @@ class Level4Fragment : Fragment() {
         builder.setNegativeButton("Repeat") { _, _ ->
             this.resetAllFields()
         }
+        builder.setCancelable(false)
         builder.show()
         timer.cancel()
+    }
+
+    fun backLevel() {
+        backLevel.setOnClickListener {
+            interfaceMain.onChangeRequest(3)
+        }
+    }
+
+    fun nextLevel() {
+        nextLevel.setOnClickListener {
+            interfaceMain.onChangeRequest(5)
+        }
     }
 
     //transition to next level

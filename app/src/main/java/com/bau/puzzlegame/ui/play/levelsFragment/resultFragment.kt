@@ -34,7 +34,7 @@ class resultFragment : Fragment() {
         }
     }
 
-    //region variables
+    //region Variables
     lateinit var root: View
     lateinit var interfaceMain: changeFragmentInterface
     lateinit var image: ImageView

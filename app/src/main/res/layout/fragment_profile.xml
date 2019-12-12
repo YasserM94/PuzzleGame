@@ -27,7 +27,7 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:orientation="vertical"
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,10 +42,11 @@
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/shape_login_filed"
+                android:hint="Name"
                 android:inputType="textPersonName"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:text="Name"
+                android:text=""
                 android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,10 +80,11 @@
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/shape_login_filed"
                 android:ems="10"
+                android:hint="High Score"
                 android:inputType="textPersonName"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:text="High Score"
+                android:text=""
                 android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -182,14 +184,19 @@
 
         <TextView
             android:id="@+id/profile_avatarUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
+            android:layout_width="90dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="86dp"
+            android:background="@drawable/shape_avatar_pick_background"
+            android:elevation="6dp"
+            android:gravity="center"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
             android:text="Pick Avatar"
-
-            app:layout_constraintBottom_toBottomOf="@+id/profile_img_avatar"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/profile_img_avatar"
-            app:layout_constraintStart_toStartOf="@+id/profile_img_avatar" />
+            app:layout_constraintStart_toStartOf="@+id/profile_img_avatar"
+            app:layout_constraintTop_toTopOf="@+id/profile_img_avatar" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

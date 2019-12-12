@@ -41,7 +41,7 @@ class Level1Fragment : Fragment() {
     }
 
 
-    //region varaibles
+    //region Variables
     lateinit var root: View
     lateinit var interfaceMain: changeFragmentInterface
     lateinit var recyclerView: RecyclerView
@@ -54,6 +54,8 @@ class Level1Fragment : Fragment() {
     lateinit var listFiller: ArrayList<Int>
     lateinit var timerTv: TextView
     lateinit var scoreTv: TextView
+    lateinit var backLevel: TextView
+    lateinit var nextLevel: TextView
     var firstPress = true
     var idForFirstPress = ""
     var idForSecondPress = ""
@@ -82,6 +84,8 @@ class Level1Fragment : Fragment() {
         initFragment()
 
         getDataForLivel1()
+        nextLevel()
+
         return root
     }
 
@@ -106,6 +110,7 @@ class Level1Fragment : Fragment() {
         recyclerView = root.findViewById(R.id.level1_recyclerView)
         timerTv = root.findViewById(R.id.level1_timer)
         scoreTv = root.findViewById(R.id.score)
+        nextLevel = root.findViewById(R.id.level_tv_next)
         manager = GridLayoutManager(this.requireContext(), 3, GridLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = manager
         onClickListner()
@@ -140,7 +145,7 @@ class Level1Fragment : Fragment() {
         })
     }
 
-    //region selected pictures comparision
+    //region Selected Pictures Comparision
     fun firstClick(index: Int, view: View) {
         idForFirstPress = listOfPuzzle[index].id
         firstPress = false
@@ -240,7 +245,7 @@ class Level1Fragment : Fragment() {
 
     }
 
-    //dublicate objects for this level
+    //duplicate objects for this level
     fun dublicateList() {
         preparListOfPostitions(level_Size)
         var size = list.size
@@ -274,7 +279,7 @@ class Level1Fragment : Fragment() {
         }
     }
 
-    //check is list of postitions full
+    //check is list of positions full
     fun preparListOfPostitions(size: Int) {
         while (listFiller.size < size) {
             var index = generateRandomNumber(size)
@@ -292,8 +297,8 @@ class Level1Fragment : Fragment() {
     fun showDialog() {
         score += (timerTv.text.toString().toLong()) * 3
         val builder = AlertDialog.Builder(this.requireContext())
-        builder.setTitle("Level finished")
-        builder.setMessage("your score is :  $score")
+        builder.setTitle("Level Finished")
+        builder.setMessage("Your score is:  $score")
 
         builder.setPositiveButton("Next") { _, _ ->
             this.getUserScore()
@@ -301,8 +306,21 @@ class Level1Fragment : Fragment() {
         builder.setNegativeButton("Repeat") { _, _ ->
             this.resetAllFields()
         }
+        builder.setCancelable(false)
         builder.show()
         timer.cancel()
+    }
+
+    fun nextLevel() {
+        nextLevel.setOnClickListener {
+            interfaceMain.onChangeRequest(2)
+        }
+    }
+
+    fun backLevel() {
+        nextLevel.setOnClickListener {
+            interfaceMain.onChangeRequest(1)
+        }
     }
 
     //transition to next level

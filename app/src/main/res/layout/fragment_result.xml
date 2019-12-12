@@ -12,39 +12,59 @@
         android:id="@+id/result_img_avatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Username"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/result_name"
+        app:layout_constraintStart_toStartOf="@+id/result_name" />
+
+    <TextView
         android:id="@+id/result_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/shape_login_filed"
         android:gravity="center"
         android:hint="Name"
-        android:textSize="19dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/result_img_avatar" />
 
     <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Results"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/result_score"
+        app:layout_constraintStart_toStartOf="@+id/result_score" />
+
+    <TextView
         android:id="@+id/result_score"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/shape_login_filed"
         android:gravity="center"
         android:hint="Result"
-        android:textSize="19dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
