@@ -51,7 +51,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="69" />
+                                                <entry key="scalingPercent" value="88" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -61,7 +61,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\icon_puzzle.png" />
+                                      <entry key="foregroundImage" value="C:\icon_puzzle_p.png" />
+                                      <entry key="foregroundLayerName" value="ic_launcher" />
                                       <entry key="outputName" value="ic_launcher_puzzle" />
                                     </map>
                                   </option>

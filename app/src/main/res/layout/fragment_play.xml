@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layoutDirection="ltr"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/play_banner"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="@mipmap/play_background"
+        android:background="#295ABD8C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,13 +18,12 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="240dp"
+            android:layout_height="260dp"
+            app:layout_constraintBottom_toTopOf="@+id/play_start_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.322"
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
@@ -32,11 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="380dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/selector_play_button"
             android:text="Play"
             android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,52 +46,50 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <!--   <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="180dp"
+           android:gravity="center"
+           android:orientation="horizontal"
+           android:padding="5dp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="1.0"
+           android:weightSum="4"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/play_banner">
 
- <!--   <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        android:weightSum="4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/play_banner">
+           <Button
+               android:id="@+id/play_btn_lvl1"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_marginBottom="5dp"
+               android:text="Level 1" />
 
-        <Button
-            android:id="@+id/play_btn_lvl1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginBottom="5dp"
-            android:text="Level 1" />
+           <Button
+               android:id="@+id/play_btn_lvl2"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="5dp"
+               android:text="Level 2" />
 
-        <Button
-            android:id="@+id/play_btn_lvl2"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Level 2" />
+           <Button
+               android:id="@+id/play_btn_lvl3"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:layout_marginBottom="5dp"
+               android:text="Level 3" />
 
-        <Button
-            android:id="@+id/play_btn_lvl3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginBottom="5dp"
-            android:text="Level 3" />
-
-        <Button
-            android:id="@+id/play_btn_lvl4"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Level 4" />
-    </LinearLayout>-->
+           <Button
+               android:id="@+id/play_btn_lvl4"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="5dp"
+               android:text="Level 4" />
+       </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
