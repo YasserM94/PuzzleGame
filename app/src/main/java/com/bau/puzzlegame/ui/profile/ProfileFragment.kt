@@ -34,7 +34,7 @@ class ProfileFragment : Fragment(), avatarInterface {
     lateinit var newPasswordTv: TextView
     lateinit var pickAvatar: TextView
     lateinit var updateBtn: Button
-    private var Progressdialog: ACProgressFlower? = null
+    private var progressDialog: ACProgressFlower? = null
     lateinit var database: FirebaseDatabase
     lateinit var myRef: DatabaseReference
     lateinit var mAuth: FirebaseAuth
@@ -74,7 +74,7 @@ class ProfileFragment : Fragment(), avatarInterface {
         mAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         myRef = database.getReference("users")
-        Progressdialog = MyProgressDialog().getInstanc(this.requireActivity())
+        progressDialog = MyProgressDialog().getInstanc(this.requireActivity())
 
         avatar = root.findViewById(R.id.profile_img_avatar)
         username = root.findViewById(R.id.profile_edt_username)
@@ -120,16 +120,16 @@ class ProfileFragment : Fragment(), avatarInterface {
         getvalues()
 
         if (newPasswordValue == repeatPasswordValue) {
-            Progressdialog!!.show()
+            progressDialog!!.show()
             sendInformationInFirebase()
         } else {
-            Progressdialog!!.dismiss()
+            progressDialog!!.dismiss()
             Toast.makeText(this.requireContext(), "password dont match", Toast.LENGTH_SHORT).show()
         }
     }
 
     fun setValues() {
-        Progressdialog!!.dismiss()
+        progressDialog!!.dismiss()
         if (localAvatar) {
             avatar.setImageDrawable(
                 getDrawable(
@@ -155,7 +155,7 @@ class ProfileFragment : Fragment(), avatarInterface {
     //get profile info
     fun getFirebaseData() {
         if (usernameValue != "Null") {
-            Progressdialog!!.show()
+            progressDialog!!.show()
             myRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                 }
@@ -174,13 +174,11 @@ class ProfileFragment : Fragment(), avatarInterface {
                         passwordValue =
                             snapshot.child(usernameValue).child("password").value.toString()
                         setValues()
-                    } else {
-
                     }
                 }
             })
         } else {
-            Progressdialog!!.dismiss()
+            progressDialog!!.dismiss()
         }
 
     }
@@ -202,7 +200,7 @@ class ProfileFragment : Fragment(), avatarInterface {
             newUser.child("password").setValue(newPasswordValue)
             newUser.child("phone").setValue(phoneNumberValue)
         }
-        Progressdialog!!.dismiss()
+        progressDialog!!.dismiss()
 
     }
 

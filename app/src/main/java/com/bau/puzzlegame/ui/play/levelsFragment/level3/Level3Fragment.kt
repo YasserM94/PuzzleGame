@@ -110,7 +110,7 @@ class Level3Fragment : Fragment() {
         listOfIndexes = ArrayList<Int>()
         listFiller = ArrayList<Int>()
         fillListOfIndexesForLevel1()
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mStorageRef = FirebaseStorage.getInstance().reference
         recyclerView = root.findViewById(R.id.level3_recyclerView)
         timerTv = root.findViewById(R.id.level3_timer)
         manager = GridLayoutManager(this.requireContext(), 4, GridLayoutManager.VERTICAL, false)
@@ -229,9 +229,9 @@ class Level3Fragment : Fragment() {
                     if (listOfIndexes.contains(index)) {
                         val url = item.path
                         val name = url.substring(url.lastIndexOf("/"))
-                        var puzzleItem =
+                        val puzzleItem =
                             PuzzleModel(item.name, name, item.name)
-                        list!!.add(puzzleItem)
+                        list.add(puzzleItem)
                     }
                 }
                 dublicateList()
@@ -240,8 +240,6 @@ class Level3Fragment : Fragment() {
             }
             .addOnFailureListener {
                 // Uh-oh, an error occurred!
-                var x = it.message
-                var z = 0
             }
 
     }
@@ -249,9 +247,9 @@ class Level3Fragment : Fragment() {
     //dublicate objects for this level
     fun dublicateList() {
         preparListOfPostitions(level_Size)
-        var size = list.size
+        val size = list.size
         var j = 0
-        for (i in 0..size - 1) {
+        for (i in 0 until size) {
             val obj = list[i]
             listOfPuzzle[listFiller[j++]] = PuzzleModel(obj.id, obj.urlImage, obj.name)
             listOfPuzzle[listFiller[j++]] = PuzzleModel(obj.id, obj.urlImage, obj.name)
@@ -273,7 +271,7 @@ class Level3Fragment : Fragment() {
     //choose images positions randomly
     fun fillListOfIndexesForLevel1() {
         while (listOfIndexes.size < level_Size / 2) {
-            var index = generateRandomNumber(9)//total of images
+            val index = generateRandomNumber(9)//total of images
             if (!listOfIndexes.contains(index)) {
                 listOfIndexes.add(index)
             }
@@ -283,7 +281,7 @@ class Level3Fragment : Fragment() {
     //check is list of postitions full
     fun preparListOfPostitions(size: Int) {
         while (listFiller.size < size) {
-            var index = generateRandomNumber(size)
+            val index = generateRandomNumber(size)
             if (!listFiller.contains(index)) {
                 listFiller.add(index)
             }
@@ -312,22 +310,22 @@ class Level3Fragment : Fragment() {
         timer.cancel()
     }
 
-    fun nextLevel() {
-        nextLevel.setOnClickListener {
-            interfaceMain.onChangeRequest(4)
+    fun backLevel() {
+        backLevel.setOnClickListener {
+            goToNextLevel(2)
         }
     }
 
-    fun backLevel() {
-        backLevel.setOnClickListener {
-            interfaceMain.onChangeRequest(2)
+    fun nextLevel() {
+        nextLevel.setOnClickListener {
+            goToNextLevel(4)
         }
     }
 
     //transition to next level
-    fun goToNextLevel() {
+    fun goToNextLevel(level: Int) {
         timer.cancel()
-        interfaceMain.onChangeRequest(4)
+        interfaceMain.onChangeRequest(level)
     }
 
     //game timer(3 min)
@@ -348,14 +346,14 @@ class Level3Fragment : Fragment() {
 
     fun showDialogForTimeFinish() {
         val builder = AlertDialog.Builder(activity!!.baseContext)
-        builder.setTitle("test")
-        builder.setMessage("time is over do you want to replay?")
+        builder.setTitle("Game Over")
+        builder.setMessage("Time is over! Do you want to try again?")
 
-        builder.setNeutralButton(android.R.string.ok) { _, _ ->
+        builder.setPositiveButton(android.R.string.yes) { _, _ ->
             this.resetAllFields()
         }
         builder.setNegativeButton(android.R.string.no) { _, _ ->
-            getActivity()!!.finish()
+            activity!!.finish()
         }
         builder.show()
     }
@@ -371,7 +369,7 @@ class Level3Fragment : Fragment() {
         val newUser = myRef.child(usernameValue)
         newUser.child("score").setValue(newScore)
         Progressdialog!!.dismiss()
-        this.goToNextLevel()
+        this.goToNextLevel(4)
     }
 
     //get user score from firebase
@@ -409,7 +407,7 @@ class Level3Fragment : Fragment() {
             }
 
             override fun onChildViewAttachedToWindow(view: View) {
-                view?.setOnClickListener {
+                view.setOnClickListener {
                     val holder = getChildViewHolder(view)
                     onClickListener.onItemClicked(holder.adapterPosition, view)
                 }

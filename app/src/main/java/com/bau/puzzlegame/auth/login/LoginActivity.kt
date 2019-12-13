@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
     //region Methods
 
     //initial activity variables
-    fun initActivty() {
+    private fun initActivty() {
         mAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         myRef = database.getReference("users")
@@ -85,7 +85,6 @@ class LoginActivity : AppCompatActivity() {
 
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
-                var y = 0
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {

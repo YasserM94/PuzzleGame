@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cc.cloudist.acplibrary.ACProgressFlower
 import com.bau.puzzlegame.R
+import com.bau.puzzlegame.helper.MyProgressDialog
 import com.bau.puzzlegame.model.userModel
 import com.bau.puzzlegame.ui.leaders.adapter.LeaderAdapter
 import com.firebase.ui.database.ChangeEventListener
@@ -18,8 +20,9 @@ import com.google.firebase.database.FirebaseDatabase
 class LeadersFragment : Fragment() {
 
     //region Variables
-    lateinit var root: View
-    lateinit var leadarRecyclerView: RecyclerView
+    private lateinit var root: View
+    lateinit var leadersRecyclerView: RecyclerView
+    private var progressDialog: ACProgressFlower? = null
     lateinit var manger: LinearLayoutManager
     private var mAdapter: FirebaseRecyclerAdapter<userModel, LeaderAdapter>? = null
     //endregion
@@ -36,21 +39,20 @@ class LeadersFragment : Fragment() {
     }
 
     //set leaders activity
-    fun initfragment() {
-
-        leadarRecyclerView = root.findViewById(R.id.leaders_rv_leaderBoard)
+    private fun initfragment() {
+        leadersRecyclerView = root.findViewById(R.id.leaders_rv_leaderBoard)
         manger = LinearLayoutManager(this.requireContext(), LinearLayoutManager.VERTICAL, true)
-        leadarRecyclerView.layoutManager = manger
-        leadarRecyclerView.setHasFixedSize(true)
-
+        leadersRecyclerView.layoutManager = manger
+        leadersRecyclerView.setHasFixedSize(true)
+        progressDialog = MyProgressDialog().getInstanc(this.requireActivity())
+        progressDialog!!.show()
 
     }
 
     //get leaders data from firebase database realtime
-    fun setDataLeader() {
-
-        var mLeaderReference = FirebaseDatabase.getInstance().getReference("users")
-        val query = mLeaderReference!!.orderByChild("score").limitToLast(10)
+    private fun setDataLeader() {
+        val mLeaderReference = FirebaseDatabase.getInstance().getReference("users")
+        val query = mLeaderReference.orderByChild("score").limitToLast(12)
 
         mAdapter = object : FirebaseRecyclerAdapter<userModel, LeaderAdapter>(
             userModel::class.java, R.layout.leaders_card, LeaderAdapter::class.java, query
@@ -72,11 +74,12 @@ class LeadersFragment : Fragment() {
             ) {
                 super.onChildChanged(type, snapshot, index, oldIndex)
                 mAdapter!!.startListening()
-                leadarRecyclerView.scrollToPosition(mAdapter!!.itemCount - 1)
+                leadersRecyclerView.scrollToPosition(mAdapter!!.itemCount - 1)
+                progressDialog!!.dismiss()
             }
         }
 
-        leadarRecyclerView.adapter = mAdapter
+        leadersRecyclerView.adapter = mAdapter
 
 
     }

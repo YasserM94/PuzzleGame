@@ -23,7 +23,7 @@ class LeaderAdapter(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     itemView.context,
                     R.drawable.shape_leader_card_background
                 )
-//                itemView.leader_card.setBackgroundColor(R.color.colorAccent)
+                //itemView.leader_card.setBackgroundColor(R.color.colorAccent)
             }
             itemView.card_tv_score.text = "" + user.score
             itemView.card_img_avatar.setImageDrawable(
