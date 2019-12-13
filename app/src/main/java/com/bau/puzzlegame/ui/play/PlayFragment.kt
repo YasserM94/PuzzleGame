@@ -53,7 +53,7 @@ class PlayFragment : Fragment() {
     fun getImageBanner() {
         val remoteConfig = FirebaseRemoteConfig.getInstance()
         val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setMinimumFetchIntervalInSeconds(2)
+            .setMinimumFetchIntervalInSeconds(3600) // every hour
             .build()
         remoteConfig.setConfigSettingsAsync(configSettings)
         remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
