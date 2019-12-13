@@ -121,7 +121,7 @@ class resultFragment : Fragment() {
     //setup congratulation animation for result fragment
     fun setupAnimation() {
         viewKonfetti.build()
-            .addColors(Color.GREEN, Color.RED, Color.MAGENTA)
+            .addColors(Color.RED, Color.GREEN, Color.CYAN, Color.YELLOW, Color.MAGENTA, Color.GRAY)
             .setDirection(0.0, 359.0)
             .setSpeed(1f, 5f)
             .setFadeOutEnabled(true)
@@ -129,7 +129,7 @@ class resultFragment : Fragment() {
             .addShapes(Shape.RECT, Shape.CIRCLE)
             .addSizes(Size(12), Size(16, 6f))
             .setPosition(-50f, viewKonfetti.width + 50f, -50f, -50f)
-            .streamFor(120, 6000L)
+            .streamFor(60, 6000L)
     }
 
     //set user info

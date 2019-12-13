@@ -44,8 +44,8 @@ class PlayFragment : Fragment() {
     fun initFragment() {
         playBtn = root.findViewById(R.id.play_start_btn)
 
+        imageBanner = root.findViewById(R.id.play_img_banner)
 
-        imageBanner = root.findViewById(R.id.imageView2)
         getImageBanner()
     }
 
