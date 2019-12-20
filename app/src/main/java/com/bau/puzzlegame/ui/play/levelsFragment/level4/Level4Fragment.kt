@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -344,7 +345,7 @@ class Level4Fragment : Fragment() {
     }
 
     fun showDialogForTimeFinish() {
-        val builder = AlertDialog.Builder(activity!!.baseContext)
+        /*val builder = AlertDialog.Builder(activity!!.baseContext)
         builder.setTitle("Game Over")
         builder.setMessage("Time is over! Do you want to try again?")
 
@@ -354,7 +355,20 @@ class Level4Fragment : Fragment() {
         builder.setNegativeButton(android.R.string.no) { _, _ ->
             activity!!.finish()
         }
-        builder.show()
+        builder.show()*/
+        /* val builder = AlertDialog.Builder(activity!!.baseContext)
+      builder.setTitle("Game Over")
+      builder.setMessage("Time is over! Do you want to try again?")
+
+      builder.setPositiveButton(android.R.string.yes) { _, _ ->
+          this.resetAllFields()
+      }
+      builder.setNegativeButton(android.R.string.no) { _, _ ->
+          activity!!.finish()
+      }
+      builder.show()*/
+        Toast.makeText(this.requireContext(),"Time is over!", Toast.LENGTH_LONG).show()
+        activity!!.finish()
     }
 
     //reset to repeat level

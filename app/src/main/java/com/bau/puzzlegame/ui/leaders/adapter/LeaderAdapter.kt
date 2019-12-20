@@ -10,6 +10,7 @@ import com.bau.puzzlegame.R
 import com.bau.puzzlegame.helper.avatarPicker
 import com.bau.puzzlegame.helper.sharedPreferenses
 import com.bau.puzzlegame.model.userModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.leaders_card.view.*
 
 class LeaderAdapter(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,12 +27,18 @@ class LeaderAdapter(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 //itemView.leader_card.setBackgroundColor(R.color.colorAccent)
             }
             itemView.card_tv_score.text = "" + user.score
-            itemView.card_img_avatar.setImageDrawable(
-                AppCompatResources.getDrawable(
-                    itemView.context,
-                    avatarPicker().instance.chooseAvatar(user.avatar!!)
+            if (user.localAvatar!!) {
+                itemView.card_img_avatar.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        itemView.context,
+                        avatarPicker().instance.chooseAvatar(user.avatar!!)
+                    )
                 )
-            )
+            } else {
+                Picasso.get().load(user.avatar).into(itemView.card_img_avatar)
+
+            }
+
 
         }
     }
